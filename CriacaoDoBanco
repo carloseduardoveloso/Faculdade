@@ -1,0 +1,38 @@
+CREATE DATABASE PROJETOFACULDADE;
+
+CREATE TABLE SOCIO(
+    Id_Socio             INT            NOT NULL,
+    Nome                 VARCHAR(256)   NOT NULL,
+    CPF                  VARCHAR(11)    NOT NULL,
+    Email                VARCHAR(256)   NOT NULL,
+    Id_Situacao          INT            NOT NULL,
+    PRIMARY KEY (Id_Socio),
+    CONSTRAINT FK_IdSituacaoSituacao FOREIGN KEY (Id_Situacao) REFERENCES SITUACAO(Id_Situacao)
+    );
+
+CREATE TABLE SITUACAO(
+    Id_Situacao          INT            NOT NULL,
+    Situacao             VARCHAR(10)    NOT NULL,
+    PRIMARY KEY (Id_Situacao)
+    );
+
+CREATE TABLE CARRO(
+    Id_Carro             INT            NOT NULL,
+    modelo               VARCHAR(128)   NOT NULL,
+    Cor                  VARCHAR(64)    NOT NULL,
+    Placa                VARCHAR(10)    NOT NULL,
+    Id_Socio             INT            NOT NULL,
+    Id_Marca             INT            NOT NULL,
+    PRIMARY KEY (Id_Carro),
+    FOREIGN KEY (Id_Socio) REFERENCES SOCIO(Id_Socio),
+    FOREIGN KEY (Id_Marca) REFERENCES MARCA(Id_Marca)
+    );
+
+CREATE TABLE MARCA(
+    Id_Marca             INT            NOT NULL,
+    Marca                VARCHAR(10)    NOT NULL,
+    PRIMARY KEY (Id_Marca)
+    );
+
+
+SELECT * FROM CUSTOMERS
