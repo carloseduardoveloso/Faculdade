@@ -1,5 +1,17 @@
 CREATE DATABASE PROJETOFACULDADE;
 
+CREATE TABLE SITUACAO(
+    Id_Situacao          INT            NOT NULL,
+    Situacao             VARCHAR(10)    NOT NULL,
+    PRIMARY KEY (Id_Situacao)
+    );
+
+CREATE TABLE MARCA(
+    Id_Marca             INT            NOT NULL,
+    Marca                VARCHAR(10)    NOT NULL,
+    PRIMARY KEY (Id_Marca)
+    );
+
 CREATE TABLE SOCIO(
     Id_Socio             INT            NOT NULL,
     Nome                 VARCHAR(256)   NOT NULL,
@@ -7,13 +19,7 @@ CREATE TABLE SOCIO(
     Email                VARCHAR(256)   NOT NULL,
     Id_Situacao          INT            NOT NULL,
     PRIMARY KEY (Id_Socio),
-    CONSTRAINT FK_IdSituacaoSituacao FOREIGN KEY (Id_Situacao) REFERENCES SITUACAO(Id_Situacao)
-    );
-
-CREATE TABLE SITUACAO(
-    Id_Situacao          INT            NOT NULL,
-    Situacao             VARCHAR(10)    NOT NULL,
-    PRIMARY KEY (Id_Situacao)
+    FOREIGN KEY (Id_Situacao) REFERENCES SITUACAO(Id_Situacao)
     );
 
 CREATE TABLE CARRO(
@@ -27,12 +33,3 @@ CREATE TABLE CARRO(
     FOREIGN KEY (Id_Socio) REFERENCES SOCIO(Id_Socio),
     FOREIGN KEY (Id_Marca) REFERENCES MARCA(Id_Marca)
     );
-
-CREATE TABLE MARCA(
-    Id_Marca             INT            NOT NULL,
-    Marca                VARCHAR(10)    NOT NULL,
-    PRIMARY KEY (Id_Marca)
-    );
-
-
-SELECT * FROM CUSTOMERS
